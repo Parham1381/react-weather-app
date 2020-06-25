@@ -44,10 +44,12 @@ export class Utils {
   };
 
   static getDistance = (value: number, units: string): string => {
-    if (units === 'fr'|| units === 'kl') {
-      return `${Math.round(value)} mi`;
-    } else if (units === 'si') {
-      return `${Math.round(value)} km`;
+    if (value && !Number.isNaN(value)) {
+      if (units === 'fr'|| units === 'kl') {
+        return `${Math.round(value)} mi`;
+      } else if (units === 'si') {
+        return `${Math.round(value)} km`;
+      }
     }
   };
 
