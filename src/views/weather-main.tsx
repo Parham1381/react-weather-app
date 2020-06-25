@@ -3,7 +3,7 @@ import { isEmpty } from 'lodash';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CurrentWeather } from '../components/current-weather';
-import { defaultCity } from '../constants/message';
+import { defaultCity } from '../constants/defaultCity';
 import { Filter, RootState } from '../constants/types';
 import { fetchingData, fetchingDataFailure, getWeatherData, setFilter } from '../store/actions';
 import { WeatherSearch } from '../components/weather-search';
