@@ -52,8 +52,6 @@ export const fetchingDataFailure = (error: string) => {
   };
 };
 
-const EXCLUDE = 'flags,minutely';
-
 /**
  * city name to get the weather data for it
  * @param {string} city
@@ -63,10 +61,16 @@ export const getWeatherData = (city: string) => {
     dispatch(fetchingData());
     try {
         const currentWeather: OpenWeatherMapResult = await getWeatherThroughAPI(city);
-        
-        dispatch(setLocation(city));
-        dispatch(setCurrentWeather(currentWeather));
-        dispatch(fetchingDataSuccess()); 
+        if (currentWeather && currentWeather.coord) {
+          dispatch(setLocation(city));
+          dispatch(setCurrentWeather(currentWeather));
+          dispatch(fetchingDataSuccess()); 
+        } else {
+          dispatch(fetchingDataFailure('City Not Found!'));
+          setTimeout(() => {
+            window.location.reload();
+          }, 5000);
+        }
     } catch (error) {
       if (error) {
         dispatch(fetchingDataFailure(error.message));

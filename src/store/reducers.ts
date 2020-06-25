@@ -6,7 +6,6 @@ const initialState: ForecastState = {
   filter: {
     units: 'kl',
     searchedLocation: '',
-    timestamp: 0,
   },
   location: '',
   currentWeather: null,

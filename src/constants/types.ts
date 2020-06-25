@@ -1,4 +1,9 @@
 export interface OpenWeatherMapResult {
+  coord:{
+    lon: number,
+    lat: number
+  };
+
   weather: [{
     id: number,
     main: string,
@@ -13,7 +18,7 @@ export interface OpenWeatherMapResult {
     temp_max: number,
     pressure: number,
     humidity: number
-  },
+  };
 
   wind: {
     speed: number,
@@ -26,23 +31,7 @@ export interface OpenWeatherMapResult {
 export interface Filter {
   units: 'si' | 'fr' | 'kl';
   searchedLocation: string;
-  timestamp: number;
 }
-/*
-export interface NavBarState {
-  location: string;
-  timestamp: number;
-}
-*/
-
-export interface WeatherMapState {
-  latitude: number;
-  longitude: number;
-  location: string;
-  error: string;
-  isLoading: boolean;
-}
-
 
 export interface ForecastState {
   isLoading: boolean;
