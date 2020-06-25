@@ -3,7 +3,6 @@ import { Filter, OpenWeatherMapResult } from '../constants/types';
 import { Utils } from '../utils';
 import { WeatherIcon } from './icon/weather-icon';
 import { WindIcon } from './icon/wind-icon';
-import Col from 'react-bootstrap/col';
 
 interface CurrentWeatherProps {
   filter: Filter;
@@ -22,7 +21,7 @@ export const CurrentWeather: React.FC<CurrentWeatherProps> = ({
   return (
     <div>
       <div className="d-flex justify-content-center mt-5">
-        <div className="col-sm-8 shadow-lg p-2 mb-1 bg-white rounded ">
+        <div className="col-sm-6 shadow-lg p-2 mb-1 bg-white rounded ">
           <div className="card-header text-center  text-danger">
             <h2>{location}</h2>
           </div>
