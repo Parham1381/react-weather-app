@@ -15,7 +15,11 @@ export const App: React.FC<any> = () => {
               <Route render={() => <div>Page not found!</div>} />
             </Switch>
           </div>
-          <footer className='footer'>Developed by Akbar Yousefi</footer>
+          <div className='footer'>
+            <div className="footerclass">
+              Developed by Akbar Yousefi
+            </div>
+          </div>
         </div>
       </Router>
     </Provider>

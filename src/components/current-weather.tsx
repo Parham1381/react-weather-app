@@ -3,7 +3,6 @@ import { Filter, OpenWeatherMapResult } from '../constants/types';
 import { Utils } from '../utils';
 import { WeatherIcon } from './icon/weather-icon';
 import { WindIcon } from './icon/wind-icon';
-import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/col';
 
 interface CurrentWeatherProps {
@@ -23,7 +22,7 @@ export const CurrentWeather: React.FC<CurrentWeatherProps> = ({
   return (
     <div>
       <div className="d-flex justify-content-center mt-5">
-        <div className="col-md-8 shadow-lg p-2 mb-1 bg-white rounded ">
+        <div className="col-sm-8 shadow-lg p-2 mb-1 bg-white rounded ">
           <div className="card-header text-center  text-danger">
             <h2>{location}</h2>
           </div>
@@ -38,14 +37,29 @@ export const CurrentWeather: React.FC<CurrentWeatherProps> = ({
           <div className="card-footer text-muted ">
             <div className="row rounded" style={{ backgroundColor: "rgb(194, 212, 214)" }}>
               <div className="col-sm-10 justify-content-center m-auto  ">
-                <Col className='current-weather-icon'>
+                <div className="d-flex justify-content-center m-auto" >
                   <WeatherIcon icon={weatherIconCode} size={!Utils.isMobile() ? '1.1rem' : '.9rem'} />
-                </Col>
-                <p> {weatherType} :  {description} </p>
-                <hr />
-                <p> {description} </p>
-                   Wind: {Utils.getWindSpeed(currentWeather.wind.speed, filter.units)}{' '}
-                  <WindIcon degree={currentWeather.wind.deg} /> 
+
+                </div>
+                <div className="d-flex justify-content-center">
+                  <p> {weatherType} :  {description} ||  {description} </p>
+                </div>
+
+                <div className="d-flex justify-content-center">
+                  <p>
+                    Wind: {Utils.getWindSpeed(currentWeather.wind.speed, filter.units)}{' '}
+                    <WindIcon degree={currentWeather.wind.deg} />
+                ||
+                Humidity: {Math.round(currentWeather.main.humidity)} <i className='wi wi-humidity' />
+                  </p>
+                </div>
+                <div className="d-flex justify-content-center">
+                  <p>
+                    Pressure: {Utils.getPressure(currentWeather.main.pressure, filter.units)}
+               ||
+               Visibility: {Utils.getDistance(currentWeather.visibility, filter.units)}
+                  </p>
+                </div>
               </div>
 
             </div>
@@ -54,36 +68,6 @@ export const CurrentWeather: React.FC<CurrentWeatherProps> = ({
 
         </div>
       </div>
-
-
-      <Form>
-        <Form.Row className='current-weather-top'>
-
-          <Col xs={8} sm={8} md={8} lg={3}>
-            <div className='current-weather-top-item'>
-
-            </div>
-          </Col>
-
-          <Col xs={8} sm={6} md={6} lg={3}>
-            <div className='current-weather-top-item'>
-              Humidity: {Math.round(currentWeather.main.humidity)} <i className='wi wi-humidity' />
-            </div>
-          </Col>
-          <Col xs={8} sm={6} md={6} lg={4}>
-            <div className='current-weather-top-item'>
-              Pressure: {Utils.getPressure(currentWeather.main.pressure, filter.units)}
-            </div>
-          </Col>
-          <Col xs={6} sm={8} md={8} lg={3}>
-            <div className='current-weather-top-item'>
-              Visibility: {Utils.getDistance(currentWeather.visibility, filter.units)}
-            </div>
-          </Col>
-        </Form.Row>
-
-
-      </Form>
     </div>
   );
 };
