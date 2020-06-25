@@ -1,7 +1,7 @@
-import { ForecastState } from '../constants/types';
+import { WeatherState } from '../constants/types';
 import * as ACTION from './actions';
 
-const initialState: ForecastState = {
+const initialState: WeatherState = {
   isLoading: false,
   filter: {
     units: 'kl',
@@ -9,7 +9,7 @@ const initialState: ForecastState = {
   },
   location: '',
   currentWeather: null,
-  error: '',
+  error: ''
 };
 
 export const reducers = (state: any = initialState, action: any) => {

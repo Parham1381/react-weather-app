@@ -28,12 +28,7 @@ export interface OpenWeatherMapResult {
   visibility: number;
 }
 
-export interface Filter {
-  units: 'si' | 'fr' | 'kl';
-  searchedLocation: string;
-}
-
-export interface ForecastState {
+export interface WeatherState {
   isLoading: boolean;
   filter: Filter;
   location: string;
@@ -41,6 +36,11 @@ export interface ForecastState {
   error: string;
 } 
 
+export interface Filter {
+  units: 'si' | 'fr' | 'kl';
+  searchedLocation: string;
+}
+
 export interface RootState {
-  weather: ForecastState;
+  weather: WeatherState;
 }
