@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { ChangeEvent } from 'react';
-import FormControl from 'react-bootstrap/FormControl';
-import Input from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+
 
 interface WeatherSearchProps {
   onSearch: any;
@@ -15,36 +13,36 @@ export const WeatherSearch: React.FC<WeatherSearchProps> = (props: WeatherSearch
 
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const value = event.target.value;
+    // console.log(value);
     setLocation(value);
   };
 
   const handleSubmit = () => {
+
+    // e.preventDefault();
     props.onSearch(location);
   };
 
   return (
-    <Form>
-      <Form.Row style={{ verticalAlign: 'middle', width: '100%' }}>
-        <Input>
-            <Input.Prepend>
-              <Input.Text id="basic-addon1"></Input.Text>
-            </Input.Prepend>
-            <FormControl
-              placeholder="City"
-              aria-label="City"
-              aria-describedby="basic-addon1"
-              onChange={handleChange}/>
-        </Input>
 
-        <Button 
-          type='button'
-          variant='primary'
-          size='lg'
-          onClick={handleSubmit}
-          >
-            Search
-        </Button>
-      </Form.Row>
-    </Form>
+    <div className="w-50 mx-auto p-2 wrapper container" >
+      <form onSubmit={handleSubmit} className="form-inline justify-content-center"  >
+        <div className="input-group w-100">
+          <input className="form-control rounded m-1"
+            style={{ fontSize: "1.2em" }}
+            placeholder="City"
+            onChange={handleChange}
+            type="text"
+          />
+          <Button
+            type='submit'
+            variant='primary'
+            size='lg'
+            className=" btn btn-lg bg-transparent fa fa-search text-light"
+            style={{ fontSize: "1.5em", border: "0px" }}
+          />
+        </div>
+      </form>
+    </div>
   );
 };
