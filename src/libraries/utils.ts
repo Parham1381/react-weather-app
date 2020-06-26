@@ -2,11 +2,6 @@ import * as moment from 'moment';
 
 export class Utils {
 
-  /**
-   * @param {number} value
-   * @param {string} units
-   * @returns {string}
-   */
   static getTemperatureSymbol = (value: number, units: string): string => {
     if (units === 'kl') {
       return `°K`;
@@ -17,11 +12,6 @@ export class Utils {
     } 
   };
 
-  /**
-   * @param {number} value
-   * @param {string} units
-   * @returns {string}
-   */
   static getPressure = (value: number, units: string): string => {
     if (units === 'fr' || units === 'kl') {
       return `${Math.round(value)} mb`;
@@ -30,11 +20,6 @@ export class Utils {
     }
   };
 
-  /**
-   * @param {number} value
-   * @param {string} units
-   * @returns {string}
-   */
   static getWindSpeed = (value: number, units: string): string => {
     if (units === 'fr' || units === 'kl') {
       return `${Math.round(value)} mph`;

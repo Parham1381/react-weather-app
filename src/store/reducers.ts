@@ -3,12 +3,12 @@ import * as ACTION from './actions';
 
 const initialState: WeatherState = {
   isLoading: false,
+  location: '',
+  currentWeather: null,
   filter: {
     units: 'kl',
     searchedLocation: '',
   },
-  location: '',
-  currentWeather: null,
   error: ''
 };
 

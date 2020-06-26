@@ -1,5 +1,5 @@
-import { OpenWeatherMapResult } from './interfaces/interfaces'; 
-import { nodeEnvironmentURL} from './constants/constants'; 
+import { OpenWeatherMapResult } from '../interfaces/interfaces'; 
+import { nodeEnvironmentURL} from '../constants/constants'; 
 
 
 const checkStatus = async (response: Response) => {

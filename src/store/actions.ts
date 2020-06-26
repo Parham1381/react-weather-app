@@ -1,6 +1,6 @@
 import { AnyAction } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
-import { getWeatherThroughAPI } from '../api';
+import { getWeatherThroughAPI } from '../libraries/rest-api';
 import { Filter, RootState, OpenWeatherMapResult } from '../interfaces/interfaces';
 
 export const FETCHING_DATA = 'FETCHING_DATA';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Filter, OpenWeatherMapResult } from '../interfaces/interfaces';
-import { Utils } from '../utils';
+import { Utils } from '../libraries/utils';
 import { WeatherIcon } from './weather-icon';
 
 interface CurrentWeatherProps {
