@@ -3,8 +3,8 @@ import { isEmpty } from 'lodash';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CurrentWeather } from '../components/current-weather';
-import { defaultCity } from '../constants/defaultCity';
-import { Filter, RootState } from '../constants/types';
+import { defaultCity } from '../constants/constants';
+import { Filter, RootState } from '../interfaces/interfaces';
 import { fetchingData, fetchingDataFailure, getWeatherData, setFilter } from '../store/actions';
 import { WeatherSearch } from '../components/weather-search';
 import Alert from 'react-bootstrap/alert';
@@ -26,7 +26,7 @@ export const WeatherComponent: React.FC<any> = () => {
   const searchByDefaultCity = (message: string) => {
     dispatch(fetchingDataFailure(message));
     setTimeout(() => {
-      dispatch(getWeatherData('Vancouver'));
+      dispatch(getWeatherData(defaultCity));
     });
   };
 

@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { Filter, OpenWeatherMapResult } from '../constants/types';
+import { Filter, OpenWeatherMapResult } from '../interfaces/interfaces';
 import { Utils } from '../utils';
-import { WeatherIcon } from './icon/weather-icon';
-import { WindIcon } from './icon/wind-icon';
+import { WeatherIcon } from './weather-icon';
 
 interface CurrentWeatherProps {
   filter: Filter;
@@ -47,7 +46,6 @@ export const CurrentWeather: React.FC<CurrentWeatherProps> = ({
                 <div className="d-flex justify-content-center">
                   <p>
                     Wind: {Utils.getWindSpeed(currentWeather.wind.speed, filter.units)}{' '}
-                    <WindIcon degree={currentWeather.wind.deg} />
                 ||
                 Humidity: {Math.round(currentWeather.main.humidity)} <i className='wi wi-humidity' />
                   </p>
@@ -60,11 +58,8 @@ export const CurrentWeather: React.FC<CurrentWeatherProps> = ({
                   </p>
                 </div>
               </div>
-
             </div>
-
           </div>
-
         </div>
       </div>
     </div>

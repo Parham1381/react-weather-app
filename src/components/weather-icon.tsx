@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as Condition from '../../constants/weather-condition';
 
 interface WeatherIconProps {
   icon: string;

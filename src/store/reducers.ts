@@ -1,4 +1,4 @@
-import { WeatherState } from '../constants/types';
+import { WeatherState } from '../interfaces/interfaces';
 import * as ACTION from './actions';
 
 const initialState: WeatherState = {

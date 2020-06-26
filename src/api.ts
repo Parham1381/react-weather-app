@@ -1,12 +1,5 @@
-import { OpenWeatherMapResult } from './constants/types'; 
-
-declare let process: {
-  env: {
-    NODE_ENV: string;
-  };
-};
-
-const nodeEnvironmentURL =  'http://localhost:3000/';
+import { OpenWeatherMapResult } from './interfaces/interfaces'; 
+import { nodeEnvironmentURL} from './constants/constants'; 
 
 
 const checkStatus = async (response: Response) => {
