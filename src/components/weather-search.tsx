@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ChangeEvent } from 'react';
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 
 interface WeatherSearchProps {
@@ -24,9 +25,7 @@ export const WeatherSearch: React.FC<WeatherSearchProps> = (props: WeatherSearch
   };
 
   return (
-
-    <div className="w-50 mx-auto p-2 wrapper container" >
-      <form onSubmit={handleSubmit} className="form-inline justify-content-center"  >
+      <Form onSubmit={handleSubmit} className="form-inline justify-content-center"  >
         <div className="input-group w-100">
           <input className="form-control rounded m-1"
             style={{ fontSize: "1.2em" }}
@@ -42,7 +41,6 @@ export const WeatherSearch: React.FC<WeatherSearchProps> = (props: WeatherSearch
             style={{ fontSize: "1.5em", border: "0px" }}
           />
         </div>
-      </form>
-    </div>
+      </Form>
   );
 };

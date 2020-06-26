@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { WeatherMain } from './weather-main';
+import { WeatherComponent } from './weather';
 import store from '../store';
 
 export const App: React.FC<any> = () => {
@@ -11,7 +11,7 @@ export const App: React.FC<any> = () => {
         <div>
           <div className='content'>
             <Switch>
-              <Route exact={true} path='/' component={WeatherMain} />
+              <Route exact={true} path='/' component={WeatherComponent} />
               <Route render={() => <div>Page not found!</div>} />
             </Switch>
           </div>

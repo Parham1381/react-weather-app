@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { WeatherMain } from './weather-main';
+import { WeatherMain } from './weather';
 import store from '../store';
 export var App = function () {
     return (React.createElement(Provider, { store: store },

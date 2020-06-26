@@ -5,7 +5,6 @@ const port = 3000;
 
 const apiKey = require('./constants/api-key.json');
 //const weatherApiMoq = require('./mock/weather-api-moq');
-console.log('--> before header');
 const corsHeader = (req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
@@ -21,36 +20,27 @@ const corsHeader = (req, res, next) => {
 
 app.use(corsHeader);
 
-console.log('--> before getWeather method');
 app.get('/getWeather', (req, res) => {
-    console.log('--> inside getWeather method');
-
-    var city = req.query.city || "";
+    var city = req.query.city || '';
     if(!city.length) {
-      res.status(404).json({"msg": 'Invalid city name in query string'});
+      res.status(404).json({'msg': 'Invalid city name in query string'});
       res.end();
       return;
     }
 
     const apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey.openWeatherMap}`;
-    http.get(apiUrl, function(response) {
-      var buffer = "", data;
+    var request = http.get(apiUrl, function(response) {
+      var buffer = '', data;
 
-      response.on("data", function (chunk) {
+      response.on('data', function (chunk) {
           buffer += chunk;
       }); 
 
-      response.on("end", function (err) {
+      response.on('end', function (err) {
           if (!err) {
-            // finished transferring data
-            // dump the raw data
-            console.log(buffer);
-            console.log("\n");
-            data = JSON.parse(buffer);
-            console.log("Here is the result:");
-            console.dir(data.coord);
-            console.dir(data.weather);
-            console.log('--> response status code: '+ res.statusCode);
+            // dump the data
+            // console.log(buffer);
+            
             res.end(buffer);
           } else {
             console.log('an error happened!');
@@ -59,10 +49,15 @@ app.get('/getWeather', (req, res) => {
       }); 
     });
     
+    request.on('error', function(err) {
+      console.log(err);
+      res.status(500).json({'msg': err});
+      res.end();
+      return;
+    });
+    
     return; 
    //setTimeout(() => res.send(weatherApiMoq), 1000);
 });
 
-console.log('--> before app listen');
 app.listen(port, () => console.log(`Server listening on port ${port}!`));
-console.log('--> after app listen');

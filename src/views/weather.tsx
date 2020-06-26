@@ -8,15 +8,14 @@ import { Filter, RootState } from '../constants/types';
 import { fetchingData, fetchingDataFailure, getWeatherData, setFilter } from '../store/actions';
 import { WeatherSearch } from '../components/weather-search';
 import Alert from 'react-bootstrap/alert';
-import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/col';
 import Row from 'react-bootstrap/row';
 import Spin from 'react-bootstrap/Spinner';
 
-export const WeatherMain: React.FC<any> = () => {
+export const WeatherComponent: React.FC<any> = () => {
   const dispatch = useDispatch();
 
-  const isLoading = false;// useSelector((state: RootState) => state.weather.isLoading);
+  const isLoading = useSelector((state: RootState) => state.weather.isLoading);
   const filter = useSelector((state: RootState) => state.weather.filter);
   const location = useSelector((state: RootState) => state.weather.location);
   const currentWeather = useSelector((state: RootState) => state.weather.currentWeather);
@@ -49,7 +48,7 @@ export const WeatherMain: React.FC<any> = () => {
 
   const SearchCity = ({}) => {
     return (
-      <WeatherSearch onSearch={handleSearch} isDisabled={isLoading} />
+        <WeatherSearch onSearch={handleSearch} isDisabled={isLoading} />
     );
   };
 
@@ -64,7 +63,7 @@ export const WeatherMain: React.FC<any> = () => {
       return (
         <div>
           <Row className='fetching-weather-content'>
-            <Col xs={24} sm={24} md={18} lg={16} xl={16}>
+            <Col>
               <Alert variant='danger' type='error'>
                 {error}
               </Alert>
@@ -72,38 +71,35 @@ export const WeatherMain: React.FC<any> = () => {
           </Row>
         </div>
       );
-    } else if (currentWeather && location) {
+    } else if (location && currentWeather) {
       return (
         <div>
           <Row>
             <Col>
               <div className='weather-search-outer'>
-                <SearchCity />
+                <div className="w-50 mx-auto p-2 wrapper container" > 
+                  <SearchCity />
+                </div>
               </div>
             </Col>
-            {/* 
-              <Col>
-              <UnitOptions />
-              </Col>
-            */}
           </Row>
           <Row>
             <CurrentWeather location={location} filter={filter} currentWeather={currentWeather} />
           </Row>
         </div>
       );
-    }
+    }; 
   };
   return (
-    <Form>
+    <div>
       {isLoading ? (
-        <Form.Row className='fetching-weather-content'>
+        <Row className='fetching-weather-content'>
           <Spin className='fetching-weather-spinner' animation='grow'/>
           <h2 className='loading-text'>Loading...</h2>
-        </Form.Row>
+        </Row>
       ) : (
         renderWeatherPage()
       )}
-    </Form>
+    </div>
   );
 };

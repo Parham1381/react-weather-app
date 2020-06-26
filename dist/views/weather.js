@@ -79,4 +79,3 @@ export var WeatherMain = function () {
         React.createElement(Spin, { className: 'fetching-weather-spinner', animation: 'grow' }),
         React.createElement("h2", { className: 'loading-text' }, "Loading..."))) : (renderWeatherPage())));
 };
-//# sourceMappingURL=weather-main.js.map
