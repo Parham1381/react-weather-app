@@ -8,6 +8,7 @@ import { Filter, RootState } from '../interfaces/interfaces';
 import { fetchingData, fetchingDataFailure, getWeatherData, setFilter } from '../store/actions';
 import { WeatherSearch } from '../components/weather-search';
 import Alert from 'react-bootstrap/alert';
+import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/col';
 import Row from 'react-bootstrap/row';
 import Spin from 'react-bootstrap/Spinner';
@@ -61,19 +62,17 @@ export const WeatherComponent: React.FC<any> = () => {
   const renderWeatherPage = () => {
     if (error) {
       return (
-        <div>
-          <Row className='fetching-weather-content'>
-            <Col>
-              <Alert variant='danger' type='error'>
-                {error}
-              </Alert>
-            </Col>
-          </Row>
-        </div>
+        <Row className='fetching-weather-content'>
+          <Col>
+            <Alert variant='danger' type='error'>
+              {error}
+            </Alert>
+          </Col>
+        </Row>
       );
     } else if (location && currentWeather) {
       return (
-        <div>
+        <Form>
           <Row>
             <Col>
               <div className='weather-search-outer'>
@@ -86,12 +85,12 @@ export const WeatherComponent: React.FC<any> = () => {
           <Row>
             <CurrentWeather location={location} filter={filter} currentWeather={currentWeather} />
           </Row>
-        </div>
+        </Form>
       );
     }; 
   };
   return (
-    <div>
+    <Form>
       {isLoading ? (
         <Row className='fetching-weather-content'>
           <Spin className='fetching-weather-spinner' animation='grow'/>
@@ -100,6 +99,6 @@ export const WeatherComponent: React.FC<any> = () => {
       ) : (
         renderWeatherPage()
       )}
-    </div>
+    </Form>
   );
 };
