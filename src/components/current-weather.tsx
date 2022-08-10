@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Filter, OpenWeatherMapResult } from '../interfaces/interfaces';
+import { IFilter, IOpenWeatherMapResult } from '../interfaces/interfaces';
 import { Utils } from '../libraries/utils';
 import { WeatherIcon } from './weather-icon';
 
 interface CurrentWeatherProps {
-  filter: Filter;
+  filter: IFilter;
   location: string;
-  currentWeather: OpenWeatherMapResult;
+  currentWeather: IOpenWeatherMapResult;
 }
 
 export const CurrentWeather: React.FC<CurrentWeatherProps> = ({

@@ -1,12 +1,12 @@
-import { WeatherState } from '../interfaces/interfaces';
+import { IWeatherState } from '../interfaces/interfaces';
 import * as ACTION from './actions';
 
-const initialState: WeatherState = {
+const initialState: IWeatherState = {
   isLoading: false,
   location: '',
   currentWeather: null,
   filter: {
-    units: 'kl',
+    units: 'si',
     searchedLocation: '',
   },
   error: ''

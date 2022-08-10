@@ -28,7 +28,8 @@ app.get('/getWeather', (req, res) => {
       return;
     }
 
-    const apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey.openWeatherMap}`;
+    var unitOfMeasurement = req.query.units || 'standard';
+    const apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey.openWeatherMap}&units=${unitOfMeasurement}`;
     var request = http.get(apiUrl, function(response) {
       var buffer = '', data;
 

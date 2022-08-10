@@ -1,4 +1,4 @@
-import { OpenWeatherMapResult } from '../interfaces/interfaces'; 
+import { IOpenWeatherMapResult } from '../interfaces/interfaces'; 
 import { nodeEnvironmentURL} from '../constants/constants'; 
 
 
@@ -28,8 +28,9 @@ const parseJSON = (response: Response) => {
 };
 
 export const getWeatherThroughAPI = (
-  city: string
-): Promise<OpenWeatherMapResult> => {
-  const requestUrl = `${nodeEnvironmentURL}getWeather?city=${city}`;
+  city: string,
+  units: string
+): Promise<IOpenWeatherMapResult> => {
+  const requestUrl = `${nodeEnvironmentURL}getWeather?city=${city}&units=${units}`;
   return fetch(requestUrl).then(checkStatus).then(parseJSON);
 };

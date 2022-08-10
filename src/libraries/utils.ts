@@ -2,6 +2,16 @@ import * as moment from 'moment';
 
 export class Utils {
 
+  static getUnitsOfMeasurement = (units: string): string => {
+    if (units === 'kl') {
+      return `standard`;
+    } else if (units === 'fr') {
+      return `imperial`;
+    } else if (units === 'si') {
+      return `metric`;
+    } 
+  };
+
   static getTemperatureSymbol = (value: number, units: string): string => {
     if (units === 'kl') {
       return `°K`;

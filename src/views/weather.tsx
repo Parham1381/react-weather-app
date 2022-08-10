@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CurrentWeather } from '../components/current-weather';
 import { defaultCity } from '../constants/constants';
-import { Filter, RootState } from '../interfaces/interfaces';
+import { IFilter, IRootState } from '../interfaces/interfaces';
 import { fetchingData, fetchingDataFailure, getWeatherData, setFilter } from '../store/actions';
 import { WeatherSearch } from '../components/weather-search';
 import Alert from 'react-bootstrap/alert';
@@ -16,13 +16,13 @@ import Spin from 'react-bootstrap/Spinner';
 export const WeatherComponent: React.FC<any> = () => {
   const dispatch = useDispatch();
 
-  const isLoading = useSelector((state: RootState) => state.weather.isLoading);
-  const filter = useSelector((state: RootState) => state.weather.filter);
-  const location = useSelector((state: RootState) => state.weather.location);
-  const currentWeather = useSelector((state: RootState) => state.weather.currentWeather);
-  const error = useSelector((state: RootState) => state.weather.error);
+  const isLoading = useSelector((state: IRootState) => state.weather.isLoading);
+  const filter = useSelector((state: IRootState) => state.weather.filter);
+  const location = useSelector((state: IRootState) => state.weather.location);
+  const currentWeather = useSelector((state: IRootState) => state.weather.currentWeather);
+  const error = useSelector((state: IRootState) => state.weather.error);
 
-  const [filterState, setFilterState] = React.useState<Filter>(filter);
+  const [filterState, setFilterState] = React.useState<IFilter>(filter);
 
   const searchByDefaultCity = (message: string) => {
     dispatch(fetchingDataFailure(message));

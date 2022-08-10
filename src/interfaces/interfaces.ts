@@ -1,4 +1,6 @@
-export interface OpenWeatherMapResult {
+import { Utils } from "../libraries/utils";
+
+export interface IOpenWeatherMapResult {
   coord:{
     lon: number,
     lat: number
@@ -28,19 +30,19 @@ export interface OpenWeatherMapResult {
   visibility: number;
 }
 
-export interface WeatherState {
+export interface IWeatherState {
   isLoading: boolean;
-  filter: Filter;
+  filter: IFilter;
   location: string;
-  currentWeather: OpenWeatherMapResult;
+  currentWeather: IOpenWeatherMapResult;
   error: string;
 } 
 
-export interface Filter {
+export interface IFilter {
   units: 'si' | 'fr' | 'kl';
   searchedLocation: string;
 }
 
-export interface RootState {
-  weather: WeatherState;
+export interface IRootState {
+  weather: IWeatherState;
 }
